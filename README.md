@@ -1,1 +1,0 @@
-# zamanayaz.github.io
