@@ -384,15 +384,20 @@ html[data-theme="dark"] .icon-moon { opacity: 0; transform: rotate(50deg) scale(
   row-gap: 0;
   align-items: start;
 }
-.hero-copy .eyebrow { grid-column: 1 / -1; margin-bottom: 22px; }
-.hero-copy h1 { grid-column: 1; max-width: none; }
-.hero-side { grid-column: 2; padding-top: 6px; }
+.hero-copy .eyebrow { grid-column: 1 / -1; grid-row: 1; margin-bottom: 22px; }
+.hero-copy h1 { grid-column: 1; grid-row: 2; max-width: none; }
+.hero-side { grid-column: 2; grid-row: 2 / span 2; padding-top: 6px; }
 .hero-side .hero-lead { margin-top: 0; max-width: 38ch; }
-.hero-side .hero-actions {
-  margin-top: 26px;
-  flex-direction: column;
-  align-items: flex-start;
+.hero-copy .hero-actions {
+  grid-column: 1;
+  grid-row: 3;
+  margin-top: clamp(18px, 2vw, 24px);
 }
+.hero-copy .hero-facts {
+  grid-column: 1 / -1;
+  grid-row: 4;
+}
+
 .eyebrow {
   --tab-c: var(--accent);
   display: inline-flex;
@@ -918,7 +923,6 @@ mark::before {
   .hero-copy { display: block; }
   .hero-side { padding-top: 0; }
   .hero-side .hero-lead { margin-top: 22px; max-width: 44ch; }
-  .hero-side .hero-actions { margin-top: 28px; flex-direction: row; align-items: center; }
   .project { grid-template-columns: minmax(0, 1fr); }
   .toolkit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .work-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); }
@@ -941,6 +945,8 @@ mark::before {
   .foot { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 400px) {
+  .hero-copy .hero-actions { gap: 8px; }
+  .hero-copy .hero-actions .btn { padding-inline: 14px; font-size: 0.875rem; gap: 6px; }
   .contact-mail { font-size: 1.375rem; }
   .brand { font-size: 1.125rem; }
 }
@@ -1002,14 +1008,13 @@ mark::before {
 
 <main id="main">
 
-  <section class="hero" id="top" aria-labelledby="hero-title">
+    <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow rise" style="--i:0">ML engineer · Rahim Yar Khan</p>
         <h1 class="rise" id="hero-title" style="--i:1">I make small language models <mark>useful</mark>.</h1>
-        <div class="hero-side">
-          <p class="hero-lead rise" style="--i:2">I fine-tune and quantize models small enough to run on modest hardware, then build the systems around them: evaluation pipelines, JSONL data flows, deployment. Lately, task-specific models for multilingual sentiment and structured output, plus the evaluation that decides what ships.</p>
-          <div class="hero-actions rise" style="--i:3">
+
+        <div class="hero-actions rise" style="--i:2">
             <a class="btn btn--primary" href="#work">
               See ML work
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
@@ -1019,15 +1024,18 @@ mark::before {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
             </a>
           </div>
-        </div>
-      </div>
 
-      <dl class="hero-facts rise" style="--i:4">
+        <dl class="hero-facts rise" style="--i:3">
         <div><dt>Now</dt><dd>Independent — applied ML and product builds</dd></div>
         <div><dt>Before</dt><dd>ML engineer at wAI Advanced Industries</dd></div>
         <div><dt>Study</dt><dd>BS Information Technology, 2025</dd></div>
         <div><dt>Based</dt><dd>Rahim Yar Khan, Pakistan</dd></div>
       </dl>
+
+        <div class="hero-side">
+          <p class="hero-lead rise" style="--i:4">I fine-tune and quantize models small enough to run on modest hardware, then build the systems around them: evaluation pipelines, JSONL data flows, deployment. Lately, task-specific models for multilingual sentiment and structured output, plus the evaluation that decides what ships.</p>
+        </div>
+      </div>
     </div>
   </section>
 
