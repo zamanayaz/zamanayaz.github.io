@@ -1,0 +1,26 @@
+[
+ {
+  "shape": "Letter",
+  "theme": "Studio",
+  "axes": "light/roman-serif/warm",
+  "hero": "Poster (wordmark under construction, live metric guides)",
+  "nav": "banner over a retracting bar",
+  "footer": "mast",
+  "imagery": "none, words are the material",
+  "photos": [],
+  "entry": "redesign full of index.html portfolio",
+  "fingerprint": "letter/poster-wordmark/index-opens/switcher/rows/statement-close",
+  "sections": "Hero, Story, Experience rows, Projects index, Skills switcher, Writing, Close, Footer",
+  "signature": "the wordmark under construction, measured live from the rendered font",
+  "waived": [
+   "kept Nexus Technologies (real employer)",
+   "kept 4x and 89 percent metrics (carried as found, verify)",
+   "42 named: banner over a retracting bar"
+  ],
+  "prompt": "portfolio of an ML engineer telling his story in one sight, job ended Sep 2026, hobby projects, Sabzi Mandi added",
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "date": "2026-10-27"
+ }
+]
