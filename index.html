@@ -7,13 +7,14 @@
     <meta name="description" content="Machine-learning engineer in Islamabad. Small language models, fine-tuning and deployment; now an offline ledger for a vegetable commission shop.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Geist:wght@400;500&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
     <style>
 /* Hallmark · shape: Letter · genre: editorial · theme: Studio (deal 1/3, seed personal-portfolio-machine-learning-engineer-8a41·d738bda9·2026-10-27·r0) · redesign: full
  * hero: Poster · nav: banner over a retracting bar · footer: mast · imagery: none, the words are the material · signature: the wordmark under construction, measured live
  * axes: light/roman-serif/warm · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · kept "Nexus Technologies" · 19 flags the name; it is the user's real employer, carried as found from the page before */
 /* Hallmark · dismissed 46a "4× faster inference", "89% accuracy" · both figures were already on the page before and are the user's own claims; verify at handoff */
+/* Hallmark · WARN 23 buildline declared: a 3px scroll-progress rail in the signal colour; painted area under 0.2 percent of the viewport, the one accent the page is allowed to spend on live state */
 /* Hallmark · pre-emit critique: P5 H4 E4 S4 R4 V4 · weakest: E, the guide-measuring code is new and was checked at three widths in the sweep */
 @import url("./tokens.css");
 @import url("./base.css");
@@ -137,6 +138,9 @@ nav#navbar.scrolled {
     animation-delay: calc(var(--i) * 90ms);
 }
 @keyframes drawIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.guide::before, .guide::after { content: ""; position: absolute; width: 7px; height: 7px; border-left: 1px solid var(--color-accent); border-bottom: 1px solid var(--color-accent); top: -3.5px; }
+.guide::before { left: -3.5px; transform: rotate(45deg); }
+.guide::after { right: -3.5px; transform: rotate(225deg); }
 .guide-tag {
     position: absolute; right: 0; bottom: 2px;
     font-family: var(--font-body); font-size: var(--text-xs); font-weight: 500;
@@ -153,6 +157,34 @@ nav#navbar.scrolled {
 .construction.live .measure-out { display: block; }
 .hero-line { margin-top: var(--space-2xl); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-xl); }
+
+/* ---------- Ticker: a press-run of the stack ---------- */
+.ticker { border-block: var(--rule-hair) solid var(--color-ink); overflow: hidden; padding-block: var(--space-sm); }
+.ticker-track { display: flex; gap: var(--space-xl); width: max-content; animation: ticker 30s linear infinite; }
+.ticker-track span { font-family: var(--font-display); font-size: var(--text-md); letter-spacing: var(--tracking-display); white-space: nowrap; color: var(--color-ink-2); }
+.tick-dot { color: var(--color-accent); font-style: normal; margin-left: var(--space-xl); }
+@keyframes ticker { to { transform: translateX(-50%); } }
+.ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+
+/* ---------- Build line: the page measures its own scroll ---------- */
+#buildline { position: fixed; left: 0; top: 0; width: 3px; height: 100dvh; z-index: var(--z-toast); pointer-events: none; }
+#buildline::before { content: ""; position: absolute; inset: 0; background: var(--color-rule); }
+#buildline::after { content: ""; position: absolute; inset: 0; background: var(--color-accent); transform-origin: top; transform: scaleY(var(--p, 0)); will-change: transform; }
+@media (max-width: 60rem) { #buildline { display: none; } }
+
+/* ---------- Tape stamp on the construction ---------- */
+.construction-tape {
+    position: absolute; top: calc(-1 * var(--space-lg)); right: calc(-1 * var(--space-sm));
+    background: var(--color-accent); color: var(--color-accent-ink);
+    font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600;
+    padding: var(--space-2xs) var(--space-md); transform: rotate(3deg);
+}
+.construction-tape::before, .construction-tape::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: var(--space-2xs);
+    background: color-mix(in oklab, var(--color-accent-ink) 20%, transparent);
+}
+.construction-tape::before { left: 0; } .construction-tape::after { right: 0; }
 
 /* ---------- Sections ---------- */
 section { padding-block: var(--section-gap); }
@@ -171,9 +203,9 @@ section { padding-block: var(--section-gap); }
 .facts .fact-sub { display: block; font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2xs); }
 
 /* Experience rows */
-.set { border-top: var(--rule-hair) solid var(--color-ink); }
+.set { border-block: var(--rule-hair) solid var(--color-ink); }
 .set > * { border-bottom: var(--rule-hair) solid var(--color-rule); }
-.set > :last-child { border-bottom-color: var(--color-ink); }
+.set > :last-child { border-bottom: none; }
 .exp-row { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--gap-columns); padding-block: var(--space-xl); }
 .exp-date { font-size: var(--text-sm); color: var(--color-muted); font-variant-numeric: tabular-nums; padding-top: var(--space-2xs); }
 .exp-role { font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1.15; letter-spacing: var(--tracking-display); margin-bottom: var(--space-2xs); }
@@ -197,6 +229,21 @@ section { padding-block: var(--section-gap); }
 .index-plus { flex-shrink: 0; color: var(--color-muted); transition: transform var(--dur-short) var(--ease-out); }
 .index-item[open] .index-plus { transform: rotate(45deg); color: var(--color-ink); }
 .index-panel { padding-bottom: var(--space-lg); }
+.index-lead .index-panel { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--gap-columns); align-items: start; }
+.index-lead .index-copy { min-width: 0; }
+.slip {
+    margin: 0; background: var(--color-paper-hi); border: var(--rule-hair) solid var(--color-ink);
+    padding: var(--space-md) var(--space-lg) var(--space-lg); transform: rotate(1.4deg);
+    box-shadow: 8px 8px 0 0 color-mix(in oklab, var(--color-accent) 28%, transparent);
+}
+.slip-head { display: flex; justify-content: space-between; gap: var(--space-md); font-family: var(--font-body), "Noto Naskh Arabic", sans-serif; font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); border-bottom: var(--rule-hair) solid var(--color-rule); padding-bottom: var(--space-2xs); margin-bottom: var(--space-2xs); }
+.slip-table { width: 100%; border-collapse: collapse; font-family: var(--font-body), "Noto Naskh Arabic", sans-serif; font-variant-numeric: tabular-nums; font-size: var(--text-sm); }
+.slip-table th { font-weight: 600; color: var(--color-muted); }
+.slip-table th, .slip-table td { padding: var(--space-2xs) 0; border-bottom: 1px dashed var(--color-rule); }
+.slip-table tfoot td { border-bottom: none; font-weight: 600; }
+.slip-table tfoot tr:last-child td { font-size: var(--text-md); color: var(--color-ink); border-top: var(--rule-hair) solid var(--color-ink); }
+.slip-cap { margin-top: var(--space-sm); font-size: var(--text-xs); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 60rem) { .index-lead .index-panel { grid-template-columns: minmax(0, 1fr); } .slip { transform: none; max-width: 340px; } }
 .index-panel.springing { overflow: hidden; }
 .index-panel p { max-width: 65ch; color: var(--color-ink-2); margin-bottom: var(--space-md); }
 
@@ -291,7 +338,7 @@ html.theme-anim footer, html.theme-anim .nav-links.open, html.theme-anim .stack-
 html { scroll-behavior: smooth; }
 
 /* One reveal, visible without script */
-.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); transition-delay: calc(var(--i, 0) * 60ms); }
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
 .js .reveal.visible { opacity: 1; transform: none; }
 
 /* ---------- Responsive ---------- */
@@ -314,7 +361,10 @@ html { scroll-behavior: smooth; }
     .exp-row { grid-template-columns: minmax(0, 1fr); gap: var(--space-xs); }
     .blog-grid { grid-template-columns: minmax(0, 1fr); }
     .guide { left: calc(-1 * var(--space-md)); right: calc(-1 * var(--space-md)); }
-    .guide-tag { display: none; }
+    .guide::before, .guide::after { content: ""; position: absolute; width: 7px; height: 7px; border-left: 1px solid var(--color-accent); border-bottom: 1px solid var(--color-accent); top: -3.5px; }
+.guide::before { left: -3.5px; transform: rotate(45deg); }
+.guide::after { right: -3.5px; transform: rotate(225deg); }
+.guide-tag { display: none; }
     .hero { min-height: auto; }
     .hero-in { min-height: calc(88dvh - 120px); }
     .banner-role { display: none; }
@@ -324,6 +374,7 @@ html { scroll-behavior: smooth; }
 <body>
 
 <a class="skip" href="#main">Skip to content</a>
+<div id="buildline" aria-hidden="true"></div>
 
 <!-- Banner over a retracting bar -->
 <div class="banner">
@@ -361,6 +412,7 @@ html { scroll-behavior: smooth; }
     <div class="container hero-in">
         <div class="construction crop" id="construction">
             <h1 id="wordmark" class="wordmark">Zaman Ayaz</h1>
+            <span class="construction-tape" aria-hidden="true">Measured live</span>
             <div class="guides" id="guides" aria-hidden="true"></div>
             <span class="measure-line" id="measureLine" aria-hidden="true"></span>
             <span class="measure-out num" id="measureOut" aria-hidden="true"></span>
@@ -377,6 +429,13 @@ html { scroll-behavior: smooth; }
 </section>
 
 <!-- ABOUT -->
+<div class="ticker" aria-label="Areas of work">
+    <div class="ticker-track">
+        <span>Small language models<i class="tick-dot">·</i></span><span>Fine-tuning<i class="tick-dot">·</i></span><span>Quantization<i class="tick-dot">·</i></span><span>RAG<i class="tick-dot">·</i></span><span>Urdu NLP<i class="tick-dot">·</i></span><span>Fastify<i class="tick-dot">·</i></span><span>React 19<i class="tick-dot">·</i></span>
+        <span>Small language models<i class="tick-dot">·</i></span><span>Fine-tuning<i class="tick-dot">·</i></span><span>Quantization<i class="tick-dot">·</i></span><span>RAG<i class="tick-dot">·</i></span><span>Urdu NLP<i class="tick-dot">·</i></span><span>Fastify<i class="tick-dot">·</i></span><span>React 19<i class="tick-dot">·</i></span>
+    </div>
+</div>
+
 <section id="about">
     <div class="container">
         <div class="about-grid">
@@ -416,7 +475,7 @@ html { scroll-behavior: smooth; }
                 <div>
                     <h3 class="exp-role">Machine Learning Engineer</h3>
                     <div class="exp-org">wAI Advanced Industries, Islamabad</div>
-                    <p class="exp-desc">Fine-tuned small language models for enterprise products, built the evaluation pipelines behind them, served through FastAPI.</p>
+                    <p class="exp-desc">Fine-tuned small language models for enterprise products; built the evaluation pipelines.</p>
                 </div>
             </div>
             <div class="exp-row reveal" style="--i: 1;">
@@ -454,8 +513,26 @@ html { scroll-behavior: smooth; }
                         <svg class="index-plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     </summary>
                     <div class="index-panel">
-                        <p>One offline app for a real shop: credit khata, owner-settlement bills as printed PDF slips, the shop’s commission and expenses. Urdu interface, whole-rupee money, one SQLite file.</p>
-                        <ul class="tags"><li>React 19</li><li>TypeScript</li><li>Fastify</li><li>SQLite</li><li>Playwright</li></ul>
+                        <div class="index-copy">
+                            <p>One offline app for a real shop: credit khata, owner-settlement bills as printed PDF slips, commission and expenses. Urdu interface, whole-rupee money, one SQLite file.</p>
+                            <ul class="tags"><li>React 19</li><li>TypeScript</li><li>Fastify</li><li>SQLite</li><li>Playwright</li></ul>
+                        </div>
+                        <figure class="slip" role="img" aria-label="A bill slip from the Sabzi Mandi app with sample data: three vegetables sold for a vendor, six percent commission, net payable nine thousand four hundred rupees, every figure a whole rupee.">
+                            <div class="slip-head"><span>بل slip</span><span>CF-2026-0114</span></div>
+                            <table class="slip-table" dir="rtl" lang="ur">
+                                <thead><tr><th>پارٹی</th><th>وزن</th><th>ریٹ</th><th>کل</th></tr></thead>
+                                <tbody>
+                                    <tr><td>ٹماٹر</td><td>40 kg</td><td>80</td><td>3,200</td></tr>
+                                    <tr><td>پیاز</td><td>25 kg</td><td>96</td><td>2,400</td></tr>
+                                    <tr><td>آلو</td><td>55 kg</td><td>80</td><td>4,400</td></tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr><td colspan="3">کمیشن 6%</td><td>−600</td></tr>
+                                    <tr><td colspan="3">ادا کرنے ہیں</td><td>9,400</td></tr>
+                                </tfoot>
+                            </table>
+                            <figcaption class="slip-cap">Sample data. Whole rupees throughout.</figcaption>
+                        </figure>
                     </div>
                 </details>
             </li>
@@ -469,7 +546,7 @@ html { scroll-behavior: smooth; }
                         <svg class="index-plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     </summary>
                     <div class="index-panel">
-                        <p>Task models for sentiment, structured output and reasoning across the Alara swarm, 4-bit quantized.</p>
+                        <p>Task models for sentiment, structured output and reasoning across the Alara swarm.</p>
                         <ul class="tags"><li>PyTorch</li><li>Unsloth</li><li>Quantization</li><li>Multi-agent</li></ul>
                     </div>
                 </details>
@@ -499,7 +576,7 @@ html { scroll-behavior: smooth; }
                         <svg class="index-plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     </summary>
                     <div class="index-panel">
-                        <p>Gemma 270M producing schema-valid JSON for automation workflows, the pipelines built end to end.</p>
+                        <p>Gemma 270M producing schema-valid JSON for automation workflows, pipelines built end to end.</p>
                         <ul class="tags"><li>Gemma</li><li>JSON Schema</li><li>Data pipelines</li></ul>
                     </div>
                 </details>
@@ -514,7 +591,7 @@ html { scroll-behavior: smooth; }
                         <svg class="index-plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     </summary>
                     <div class="index-panel">
-                        <p>Ingests JSONL datasets, triggers configurable fine-tuning runs, returns evaluation reports with version tracking.</p>
+                        <p>Ingests JSONL datasets, triggers fine-tuning runs, returns evaluation reports with version tracking.</p>
                         <ul class="tags"><li>FastAPI</li><li>JSONL</li><li>MLOps</li></ul>
                     </div>
                 </details>
@@ -529,7 +606,7 @@ html { scroll-behavior: smooth; }
                         <svg class="index-plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     </summary>
                     <div class="index-panel">
-                        <p>Chain-of-thought fine-tuning on Llama 3.2 3B, served through llama.cpp for structured evaluation.</p>
+                        <p>Chain-of-thought fine-tuning on Llama 3.2 3B, served through llama.cpp.</p>
                         <ul class="tags"><li>Llama 3.2</li><li>CoT</li><li>llama.cpp</li></ul>
                     </div>
                 </details>
@@ -544,7 +621,7 @@ html { scroll-behavior: smooth; }
                         <svg class="index-plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     </summary>
                     <div class="index-panel">
-                        <p>Reads ArXiv and synthesizes answers, orchestrated by LangGraph with contextual memory.</p>
+                        <p>Reads ArXiv and synthesizes answers, orchestrated by LangGraph.</p>
                         <ul class="tags"><li>LangChain</li><li>LangGraph</li><li>RAG</li></ul>
                     </div>
                 </details>
@@ -702,11 +779,26 @@ html { scroll-behavior: smooth; }
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
+    // Build line: 1:1 with the scroll, on the compositor
+    const buildline = document.getElementById('buildline');
+    if (buildline) {
+        let queued = false;
+        const setP = () => {
+            const max = document.documentElement.scrollHeight - innerHeight;
+            buildline.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : '0');
+            queued = false;
+        };
+        addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(setP); } }, { passive: true });
+        setP();
+    }
+
     // Scroll reveal (kept wiring; visible without script via .js scoping)
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        entries.forEach((entry) => {
+            // reveal if visible now OR already scrolled past (anchor jumps, fast scroll,
+            // find-in-page: content above the viewport must never stay hidden)
+            if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
